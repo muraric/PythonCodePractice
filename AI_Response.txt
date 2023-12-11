@@ -1,0 +1,28 @@
+Absolutely, below is the Python code for a function called
+decode(message_file) that decodes the input file as per the given algorithm
+File name is the input for the function , and returns decoded string.
+
+Reads the input file line by line and splits it with BLANK space as delimiter.
+The number is added as the key and the word is added as the value to the dictionary code_dictionary.
+The keys of the dictionary is added to the list and sorted.
+
+The while loop is iterated till length of the key list by finding end of the line in the pyramid
+by incrementing the count by 1.
+
+def decode(message_file):
+    with open(message_file) as file:
+        code_dictionary = {}
+        for line in file:
+            code_dictionary[int(line.split()[0])] = line.split()[1]
+        key_list = list(code_dictionary.keys())
+        key_list.sort()
+        i = 0
+        j = 2
+        decode_string = ""
+        while i < len(key_list):
+            decode_string = decode_string + code_dictionary.get(key_list[i]) + " "
+            i = i + j
+            j = j + 1
+        return decode_string
+
+The function stores the
